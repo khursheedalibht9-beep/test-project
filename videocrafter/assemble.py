@@ -53,7 +53,11 @@ def fit_background(background, size, duration):
         clip = clip.cropped(x_center=clip.w / 2, y_center=clip.h / 2, width=width, height=height)
     else:
         clip = ImageClip(background["path"]).with_duration(duration)
-        # gentle Ken Burns zoom so static gradients feel alive
+        # cover-crop photos of any aspect ratio to fill the frame
+        scale = max(width / clip.w, height / clip.h)
+        clip = clip.resized(scale)
+        clip = clip.cropped(x_center=clip.w / 2, y_center=clip.h / 2, width=width, height=height)
+        # gentle Ken Burns zoom so still photos feel alive
         clip = clip.resized(lambda t: 1.0 + 0.04 * (t / max(duration, 0.1)))
         clip = CompositeVideoClip([clip.with_position("center")], size=size).with_duration(duration)
     return clip

@@ -7,7 +7,9 @@ Give it a topic, it does everything:
 
 1. **Script** — writes a hook, story scenes, and an outro
 2. **Voiceover** — natural AI voice (Microsoft Edge neural TTS, free, no key)
-3. **Visuals** — real stock footage (free Pexels key) or generated backgrounds (no key)
+3. **Visuals** — real stock footage (free Pexels key), or real topic-matched
+   photos from Wikimedia Commons / Openverse (free, **no key needed**), with a
+   Ken Burns motion effect
 4. **Captions** — bold animated word-chunk captions, Shorts/TikTok style
 5. **Render** — final MP4 ready to upload
 
@@ -75,7 +77,8 @@ pytest
 
 - **Script**: Wikipedia (no key) or Groq / Gemini free tiers
 - **Voice**: `edge-tts` — Microsoft Edge's neural voices, free and keyless
-- **Footage**: Pexels free API, or locally generated gradient backgrounds
+- **Visuals**: Pexels free API (video), or Wikimedia Commons / Openverse
+  photos (no key), or locally generated backgrounds as a last resort
 - **Editing/render**: MoviePy + FFmpeg, open source, runs on your machine
 
 ## Requirements
