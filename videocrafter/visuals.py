@@ -39,7 +39,7 @@ def make_gradient_image(size, seed, path):
     vignette = (1 - 0.35 * np.clip(xx + yy, 0, 1))[..., None]
     pixels = (pixels * vignette).astype(np.uint8)
 
-    Image.fromarray(pixels, "RGB").save(path)
+    Image.fromarray(pixels).save(path)
     return path
 
 

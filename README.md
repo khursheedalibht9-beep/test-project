@@ -52,6 +52,24 @@ python -m videocrafter "ancient Egypt" \
   `urdu-female`, or any voice name from `edge-tts --list-voices`
   (hundreds of voices, dozens of languages — all free)
 - `--rate`: speaking speed, e.g. `"+10%"` or `"-5%"`
+- `--script-file my_script.txt`: use your own script instead of
+  auto-generating — a plain text file, one scene per line
+- `--preview`: render at half resolution and 24 fps — much faster, great for
+  checking the result before the final full-quality render
+
+## Offline voice fallback
+
+If the Edge TTS service is ever unreachable (offline, firewall), VideoCrafter
+automatically falls back to [espeak-ng](https://github.com/espeak-ng/espeak-ng)
+when it is installed (`sudo apt install espeak-ng`). The voice is robotic but
+free and works with no internet at all.
+
+## Tests
+
+```bash
+pip install pytest
+pytest
+```
 
 ## How it stays free
 
