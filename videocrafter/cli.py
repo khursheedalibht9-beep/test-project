@@ -39,17 +39,34 @@ def main(argv=None):
                         help='speaking speed, e.g. "+10%%" or "-5%%" (default: +5%%)')
     parser.add_argument("-o", "--output", default=None,
                         help="output file (default: <topic>.mp4)")
+    parser.add_argument("--script-file", default=None,
+                        help="use your own script instead of auto-generating: "
+                             "a text file with one scene per line")
     parser.add_argument("--fps", type=int, default=30)
+    parser.add_argument("--preview", action="store_true",
+                        help="render at half resolution and 24 fps (much faster, "
+                             "good for checking the result before a final render)")
     parser.add_argument("--keep-temp", action="store_true",
                         help="keep intermediate audio/background files")
     args = parser.parse_args(argv)
 
     size = FORMATS[args.format]
+    fps = args.fps
+    if args.preview:
+        size = (size[0] // 2, size[1] // 2)
+        fps = min(fps, 24)
     out_path = args.output or f"{slugify(args.topic)}.mp4"
 
-    print(f"[1/4] Writing script for: {args.topic}")
-    data = script_mod.generate_script(args.topic, n_scenes=max(3, args.scenes))
-    scenes = data["scenes"]
+    if args.script_file:
+        print(f"[1/4] Using your script from {args.script_file}")
+        with open(args.script_file, encoding="utf-8") as fh:
+            lines = [line.strip() for line in fh if line.strip()]
+        scenes = [{"text": line, "keywords": script_mod.extract_keywords(line, args.topic)}
+                  for line in lines]
+    else:
+        print(f"[1/4] Writing script for: {args.topic}")
+        data = script_mod.generate_script(args.topic, n_scenes=max(3, args.scenes))
+        scenes = data["scenes"]
     for i, s in enumerate(scenes):
         print(f"      {i + 1}. {s['text']}")
 
@@ -61,7 +78,7 @@ def main(argv=None):
     backgrounds = visuals.gather_backgrounds(scenes, size, workdir)
 
     print("[4/4] Rendering video")
-    build_video(scenes, voice_paths, backgrounds, size, out_path, fps=args.fps)
+    build_video(scenes, voice_paths, backgrounds, size, out_path, fps=fps)
 
     if args.keep_temp:
         print(f"      temp files kept in {workdir}")
