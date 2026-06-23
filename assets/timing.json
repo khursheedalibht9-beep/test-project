@@ -1,0 +1,50 @@
+{
+  "lead_in": 1.0,
+  "gap": 1.8918731999999998,
+  "tail_out": 0.8,
+  "total_duration": 45.000726,
+  "scenes": [
+    {
+      "id": 1,
+      "title": "The Dark Start",
+      "line": "Every great journey begins in darkness, when nothing feels possible.",
+      "start": 1.0,
+      "end": 6.240952
+    },
+    {
+      "id": 2,
+      "title": "The Doubt",
+      "line": "There will be days when doubt feels louder than your dreams.",
+      "start": 8.1328252,
+      "end": 12.1054782
+    },
+    {
+      "id": 3,
+      "title": "The Decision",
+      "line": "But somewhere inside you, a decision is forming: to rise anyway.",
+      "start": 13.9973514,
+      "end": 19.2831564
+    },
+    {
+      "id": 4,
+      "title": "The Grind",
+      "line": "One step. One breath. One choice, repeated until it becomes unstoppable.",
+      "start": 21.1750296,
+      "end": 27.943328599999997
+    },
+    {
+      "id": 5,
+      "title": "The Breakthrough",
+      "line": "Then the storm breaks, and the light you fought for finally arrives.",
+      "start": 29.835201799999997,
+      "end": 34.801006799999996
+    },
+    {
+      "id": 6,
+      "title": "The Triumph",
+      "line": "Because the ones who keep going are the ones who change everything. Your moment starts now.",
+      "start": 36.692879999999995,
+      "end": 44.199999999999996
+    }
+  ]
+}

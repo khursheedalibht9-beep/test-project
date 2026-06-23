@@ -5,3 +5,8 @@ __pycache__/
 .vscode/
 dist/
 build/
+
+# regenerable pipeline intermediates (run `python3 pipeline/main.py` to rebuild)
+assets/audio/
+assets/clips/
+assets/images/
